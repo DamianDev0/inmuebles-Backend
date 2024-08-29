@@ -1,14 +1,22 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { AppService } from './app.service';
-import { CreatePropertyDto } from './dtos/createProperty/CreateProperty.dto';
+import { Body, Controller, Post } from '@nestjs/common';
 
-@Controller()
+import { Controller, Get } from '@nestjs/common';
+import { AppService } from './app.service';
+import { CreatePropertyDto } from './dtos/createPropertyDTO/createProperty.dto';
+import { ApiTags } from '@nestjs/swagger';
+
+@ApiTags('properties')
+@Controller('properties')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
- @Post()
- async postProperty(@Body() property:CreatePropertyDto){
-    return this.appService.createNewProperty(property)
- }
-
+  @Post()
+  async postProperty(@Body() property: CreatePropertyDto) {
+    return await this.appService.createNewProperty(property);
+  }
+  
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
+  }
 }
