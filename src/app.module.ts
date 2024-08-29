@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import AppService from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { CreatePropertyService } from './services/createProperty/createProperty.service';
 import { Property } from './entities/property.entity';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([Property]),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -27,6 +29,6 @@ import { Property } from './entities/property.entity';
     TypeOrmModule.forFeature([Property])
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CreatePropertyService],
 })
 export class AppModule { }
