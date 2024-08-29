@@ -3,9 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { CreatePropertyService } from './services/CreateProperty/createProperty.service';
+import { Property } from './entities/property.entity';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([Property]),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -25,6 +28,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CreatePropertyService],
 })
 export class AppModule {}
