@@ -1,12 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { CreatePropertyDto } from './dtos/createPropertyDTO/createProperty.dto';
 
-@Controller()
+@Controller('properties')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Post()
+  async postProperty(@Body() property: CreatePropertyDto) {
+    return await this.appService.createNewProperty(property);
   }
 }
