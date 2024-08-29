@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -27,6 +28,15 @@ export class Property {
   address: string;
 
   @Column()
+  city: string;
+
+  @Column()
+  deparment: string;
+
+  @Column()
+  neighborhood: string;
+
+  @Column()
   price: number;
 
   @Column({ type: 'float' })
@@ -44,7 +54,11 @@ export class Property {
   @Column({ type: 'enum', enum: Status })
   status: Status;
 
+  @Column()
+  property_type_id: string;
+
   @ManyToOne(() => TypeProperty)
+  @JoinColumn({ name: 'property_type_id' })
   property_type: TypeProperty;
 
   @OneToMany(() => PropertyMedia, (media) => media.property)
