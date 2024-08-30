@@ -12,6 +12,10 @@ import {
 import { TypeProperty } from './propertyTypes.entity';
 import { PropertyMedia } from './propertyMedia.entity';
 import { PropertyFeatures } from './propertyFeatures.entity';
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 @Entity('properties')
 export class Property {

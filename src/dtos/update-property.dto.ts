@@ -1,7 +1,6 @@
-import { Type } from "@nestjs/common";
 import { IsInt, IsString } from "class-validator";
 import { Status } from "src/common/enums/status.enum";
-import { PropertyFeatures } from "src/entities/PropertyFeatures.entity";
+import { PropertyFeatures } from "src/entities/propertyFeatures.entity";
 import { PropertyMedia } from "src/entities/propertyMedia.entity";
 import { TypeProperty } from "src/entities/propertyTypes.entity";
 
@@ -46,7 +45,7 @@ export class UpdatePropertyDTO {
     @IsString()
     property_type_id?: string;
 
-    media?: PropertyMedia;
+    media?: PropertyMedia[];
 
-    features: PropertyFeatures;
+    features: PropertyFeatures[];
 }

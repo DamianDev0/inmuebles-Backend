@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CreatePropertyService } from './services/createProperty/createProperty.service';
 import { Property } from './entities/property.entity';
+import { CloudinaryModule } from './external-services/cloudinary/cloudinary.module';
+import { CloudinaryService } from './external-services/cloudinary/cloudinary.service';
 
 @Module({
   imports: [
@@ -26,9 +28,14 @@ import { Property } from './entities/property.entity';
         synchronize: true,
       }),
     }),
-    TypeOrmModule.forFeature([Property])
+    TypeOrmModule.forFeature([Property]),
+    CloudinaryModule
   ],
   controllers: [AppController],
+<<<<<<< Updated upstream
   providers: [AppService, CreatePropertyService],
+=======
+  providers: [AppService, CloudinaryService],
+>>>>>>> Stashed changes
 })
 export class AppModule { }
