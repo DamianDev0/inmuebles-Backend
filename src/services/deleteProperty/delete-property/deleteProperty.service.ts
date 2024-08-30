@@ -1,9 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult } from 'typeorm'; // Asegúrate de que esto esté importado correctamente
-import { Property } from 'src/entities/property.entity';
+import { Property } from '../../../entities/property.entity';
 import { Repository } from 'typeorm';
-import { DeletePropertyDto } from 'src/dtos/deletePropertyDTO/deleteProperty.dto';
 
 @Injectable()
 export class DeletePropertyService {
@@ -12,12 +11,12 @@ export class DeletePropertyService {
     private readonly propertyRepository: Repository<Property>,
   ) {}
 
-  async deleteProperty(deletePropertyDto: DeletePropertyDto): Promise<DeleteResult> {
-    // Utiliza el DTO para eliminar la propiedad por ID
-    const result: DeleteResult = await this.propertyRepository.delete(deletePropertyDto.id);
+  async deleteProperty(id: string): Promise<DeleteResult> {
+    // Elimina la propiedad por ID usando el repositorio
+    const result: DeleteResult = await this.propertyRepository.delete(id);
 
     if (result.affected === 0) {
-      throw new NotFoundException(`Property with ID ${deletePropertyDto.id} not found.`);
+      throw new NotFoundException(`Property with ID ${id} not found.`);
     }
 
     return result;

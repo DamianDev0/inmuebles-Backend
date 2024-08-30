@@ -9,6 +9,7 @@ import { GetAllPropertiesService } from './services/GetProperty/getAllProperties
 import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.service';
 import { CloudinaryService } from './common/cloudinary/cloudinary.service';
 import { CloudinaryProvider } from './common/cloudinary/cloudinary.provaider';
+import { DeletePropertyService } from './services/deleteProperty/delete-property/deleteProperty.service';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { CloudinaryProvider } from './common/cloudinary/cloudinary.provaider';
     GetPropertyByIdService,
     CloudinaryService,
     CloudinaryProvider,
+    DeletePropertyService,
   ],
 })
 export class AppModule {}
