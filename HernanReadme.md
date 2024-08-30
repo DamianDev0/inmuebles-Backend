@@ -26,4 +26,4 @@ The PropertiesController now handles property-related routes such as /properties
 Summary
 The response interceptor provides a standardized way of formatting and managing responses across the application.
 The PropertiesController has been restructured to align with SOLID principles, leading to cleaner, more maintainable code.
-This update enhances the scalability of the codebase, making it easier to extend and maintain over time.
+This update enhances the scalability of the codebase, making it easier to extend and maintain over time .
