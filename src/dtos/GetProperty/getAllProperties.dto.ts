@@ -1,13 +1,12 @@
 import { Injectable } from "@nestjs/common";
-import {  IsBtcAddress, IsDate, IsEmpty, IsNotEmpty,  IsNumber,  IsString, IsUUID } from "class-validator";
-import { PropertyMedia } from "src/entities/propertyMedia.entity";
+import {  IsBtcAddress, IsDate, IsNotEmpty,  IsNumber,  IsOptional,  IsString, IsUUID } from "class-validator";
 
 @Injectable()
 export class GetAllPropertiesDto{
     @IsString()
     @IsNotEmpty()
     @IsUUID()
-    id:string;
+    readonly id:string;
 
     @IsString()
     @IsNotEmpty()
@@ -47,7 +46,7 @@ export class GetAllPropertiesDto{
     bathrooms:number;
 
     @IsNumber()
-    @IsEmpty()
+    @IsOptional()
     garage:number;
 
     @IsString()
@@ -59,7 +58,7 @@ export class GetAllPropertiesDto{
     media:string
 
     @IsString()
-    @IsEmpty()
+    @IsOptional()
     owner_id:string
 
     @IsDate()

@@ -1,9 +1,6 @@
-import { CreatePropertyDto } from "src/dtos/createProperty/CreateProperty.dto";
-import { Property } from "src/entities/property.entity";
+import { GetAllPropertiesDto } from 'src/dtos/GetProperty/getAllProperties.dto';
+import { Property } from 'src/entities/property.entity';
 
-export interface IcreateProperty{
-    createProperty(property:CreatePropertyDto):Promise<Property>
-
+export interface IgetAllProperties {
+    getAllProperties(property: GetAllPropertiesDto): Promise<Property[]>;
 }
-
-
