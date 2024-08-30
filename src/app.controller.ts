@@ -1,7 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   Post,
   UploadedFile,
@@ -41,5 +44,11 @@ export class AppController {
   @Get(':propertyId')
   async getPropertyById(@Param() propertyIdDto: IdOPropertyDto) {
     return await this.appService.getPropertyById(propertyIdDto);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.OK)
+  async deleteProperty(@Param('id') id: string) {
+    return await this.appService.deleteProperty(id);
   }
 }

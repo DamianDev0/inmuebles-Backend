@@ -5,13 +5,14 @@ import { CreatePropertyService } from './services/createProperty/createProperty.
 import { GetAllPropertiesService } from './services/GetProperty/getAllProperties.service';
 import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.service';
 import { IdOPropertyDto } from './dtos/GetProperty/getPropertyByIdDto.dto';
-
+import { DeletePropertyService } from './services/deleteProperty/delete-property/deleteProperty.service';
 @Injectable()
 export class AppService {
   constructor(
     private readonly createProperty: CreatePropertyService,
     private readonly getProperty: GetAllPropertiesService,
     private readonly getPropertyByOneId: GetPropertyByIdService,
+    private readonly deletePropertyService: DeletePropertyService,
   ) {}
 
   createNewProperty(createPropertyDto: CreatePropertyDto): Promise<Property> {
@@ -26,5 +27,9 @@ export class AppService {
     propertyIdDto: IdOPropertyDto,
   ): Promise<Property | undefined> {
     return this.getPropertyByOneId.getPropertyById(propertyIdDto.propertyId);
+  }
+
+  async deleteProperty(id: string) {
+    return await this.deletePropertyService.deleteProperty(id);
   }
 }
