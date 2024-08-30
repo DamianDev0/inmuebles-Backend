@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-
-import { CreatePropertyService } from './services/CreateProperty/createProperty.service';
 import { Property } from './entities/property.entity';
 import { CreatePropertyDto } from './dtos/createPropertyDTO/createProperty.dto';
+import { CreatePropertyService } from './services/createProperty/createProperty.service';
+import { GetAllPropertiesService } from './services/GetProperty/getAllProperties.service';
 
 @Injectable()
 export class AppService {
@@ -10,9 +10,13 @@ export class AppService {
     return 'Hello World!';
   }
   
-  constructor(private readonly createProperty:CreatePropertyService){}
+  constructor(private readonly createProperty:CreatePropertyService, private readonly getProperty:GetAllPropertiesService){}
 
   createNewProperty(createPropertyDto: CreatePropertyDto): Promise<Property> {
     return this.createProperty.createProperty(createPropertyDto);
+  }
+
+  getProperties(): Promise<Property[]> {
+    return this.getProperty.getAllProperties();
   }
 }

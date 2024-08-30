@@ -3,8 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { CreatePropertyService } from './services/CreateProperty/createProperty.service';
+import { CreatePropertyService } from './services/createProperty/createProperty.service';
 import { Property } from './entities/property.entity';
+import { GetAllPropertiesService } from './services/GetProperty/getAllProperties.service';
 
 @Module({
   imports: [
@@ -28,6 +29,6 @@ import { Property } from './entities/property.entity';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, CreatePropertyService],
+  providers: [AppService, CreatePropertyService,GetAllPropertiesService],
 })
 export class AppModule {}
