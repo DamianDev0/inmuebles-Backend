@@ -15,21 +15,18 @@ export class CreatePropertyService implements IcreateProperty {
   ) {}
 
   async createProperty(propertyDto: CreatePropertyDto): Promise<Property> {
-    // Check if image exists in the DTO
     if (!propertyDto.image) {
       throw new Error('Image file is required');
     }
 
-    // Upload image to Cloudinary
     const uploadedImage = await this.cloudinaryService.uploadFile(
       propertyDto.image,
     );
-    const imageUrl = uploadedImage.secure_url; // Get the URL of the uploaded image
+    const imageUrl = uploadedImage.secure_url;
 
-    // Create a new property object with the image URL
     const property = this.propertyRepository.create({
       ...propertyDto,
-      media: imageUrl, // Assign the image URL to the media property
+      media: imageUrl,
     });
 
     // Save the property to the database

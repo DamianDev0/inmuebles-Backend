@@ -8,11 +8,11 @@ import { IdOPropertyDto } from './dtos/GetProperty/getPropertyByIdDto.dto';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
-  }
-  
-  constructor(private readonly createProperty:CreatePropertyService, private readonly getProperty:GetAllPropertiesService, private readonly getPropertyByOneId:GetPropertyByIdService){}
+  constructor(
+    private readonly createProperty: CreatePropertyService,
+    private readonly getProperty: GetAllPropertiesService,
+    private readonly getPropertyByOneId: GetPropertyByIdService,
+  ) {}
 
   createNewProperty(createPropertyDto: CreatePropertyDto): Promise<Property> {
     return this.createProperty.createProperty(createPropertyDto);
@@ -22,8 +22,9 @@ export class AppService {
     return this.getProperty.getAllProperties();
   }
 
-  getPropertyById(propertyIdDto: IdOPropertyDto): Promise<Property | undefined> {
+  getPropertyById(
+    propertyIdDto: IdOPropertyDto,
+  ): Promise<Property | undefined> {
     return this.getPropertyByOneId.getPropertyById(propertyIdDto.propertyId);
   }
-
 }
