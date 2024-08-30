@@ -26,11 +26,6 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/swagger": "^7.4.0",
     "@nestjs/typeorm": "^10.0.2",
-<<<<<<< HEAD
-=======
-    "@types/multer": "^1.4.12",
-    "class-transformer": "^0.5.1",
->>>>>>> b2b1ade (add global pipes, swagger config, globalprefix)
     "class-validator": "^0.14.1",
     "mysql2": "^3.11.0",
     "reflect-metadata": "^0.2.0",
