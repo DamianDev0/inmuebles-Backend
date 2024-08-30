@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CreatePropertyService } from './services/createProperty/createProperty.service';
 import { Property } from './entities/property.entity';
 import { GetAllPropertiesService } from './services/GetProperty/getAllProperties.service';
+import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.service';
 
 @Module({
   imports: [
@@ -29,6 +30,6 @@ import { GetAllPropertiesService } from './services/GetProperty/getAllProperties
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, CreatePropertyService,GetAllPropertiesService],
+  providers: [AppService, CreatePropertyService,GetAllPropertiesService,GetPropertyByIdService],
 })
 export class AppModule {}
