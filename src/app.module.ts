@@ -3,7 +3,10 @@ import { AppController } from './app.controller';
 import AppService from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+<<<<<<< HEAD
 import { CreatePropertyService } from './services/createProperty/createProperty.service';
+=======
+>>>>>>> origin/feature/maicol
 import { Property } from './entities/property.entity';
 
 @Module({
