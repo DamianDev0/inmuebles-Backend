@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePropertyService } from './services/createProperty/createProperty.service';
+
 import { Property } from './entities/property.entity';
 import { CreatePropertyDto } from './dtos/createPropertyDTO/createProperty.dto';
+import { CreatePropertyService } from './services/createProperty/createProperty.service';
 
 @Injectable()
 export default class AppService {
