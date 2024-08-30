@@ -5,8 +5,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CreatePropertyService } from './services/createProperty/createProperty.service';
 import { Property } from './entities/property.entity';
-import { CloudinaryModule } from './external-services/cloudinary/cloudinary.module';
-import { CloudinaryService } from './external-services/cloudinary/cloudinary.service';
+import { GetAllPropertiesService } from './services/GetProperty/getAllProperties.service';
+import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.service';
+import { CloudinaryService } from './common/cloudinary/cloudinary.service';
+import { CloudinaryProvider } from './common/cloudinary/cloudinary.provaider';
+import { DeletePropertyService } from './services/deleteProperty/delete-property/deleteProperty.service';
 
 @Module({
   imports: [
@@ -32,10 +35,14 @@ import { CloudinaryService } from './external-services/cloudinary/cloudinary.ser
     CloudinaryModule
   ],
   controllers: [AppController],
-<<<<<<< Updated upstream
-  providers: [AppService, CreatePropertyService],
-=======
-  providers: [AppService, CloudinaryService],
->>>>>>> Stashed changes
+  providers: [
+    AppService,
+    CreatePropertyService,
+    GetAllPropertiesService,
+    GetPropertyByIdService,
+    CloudinaryService,
+    CloudinaryProvider,
+    DeletePropertyService,
+  ],
 })
 export class AppModule { }

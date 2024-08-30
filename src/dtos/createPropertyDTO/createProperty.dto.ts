@@ -58,4 +58,6 @@ export class CreatePropertyDto {
 
   @IsEnum(Status)
   status?: Status;
+
+  image: Express.Multer.File;
 }
