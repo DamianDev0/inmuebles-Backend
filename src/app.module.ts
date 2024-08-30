@@ -3,8 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { CreatePropertyService } from './services/CreateProperty/createProperty.service';
+import { CreatePropertyService } from './services/createProperty/createProperty.service';
 import { Property } from './entities/property.entity';
+import { GetAllPropertiesService } from './services/GetProperty/getAllProperties.service';
+import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.service';
+import { CloudinaryService } from './common/cloudinary/cloudinary.service';
+import { CloudinaryProvider } from './common/cloudinary/cloudinary.provaider';
 
 @Module({
   imports: [
@@ -28,6 +32,13 @@ import { Property } from './entities/property.entity';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, CreatePropertyService],
+  providers: [
+    AppService,
+    CreatePropertyService,
+    GetAllPropertiesService,
+    GetPropertyByIdService,
+    CloudinaryService,
+    CloudinaryProvider,
+  ],
 })
 export class AppModule {}
