@@ -16,7 +16,6 @@ async function bootstrap() {
       transform: true,
     }),
   );
-
   // Configuración de Swagger
   const config = new DocumentBuilder()
     .setTitle('Properties API')
