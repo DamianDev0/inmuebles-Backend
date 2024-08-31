@@ -1,4 +1,9 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  HttpStatus,
+  HttpException,
+} from '@nestjs/common';
 import { v2 as cloudinary } from 'cloudinary';
 import { CloudinaryResponse } from './cloudinary-response';
 import * as streamifier from 'streamifier'; // Ensure correct import
@@ -28,5 +33,29 @@ export class CloudinaryService {
         reject(error);
       }
     });
+  }
+
+  async deleteImage(imageUrl: string): Promise<void> {
+    const publicId = this.getPublicIdFromUrl(imageUrl);
+    //delete image of cloud service
+    try {
+      const deleteResult = await cloudinary.uploader.destroy(publicId);
+      if (deleteResult.result !== 'ok') {
+        throw new Error('Cloudinary returned an unsuccessful result');
+      }
+    } catch (error) {
+      throw new HttpException(
+        'Failed to delete image',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
+  private getPublicIdFromUrl(url: string): string {
+    //get public id that cloudinary need for destroy method
+    const urlParts = url.split('/');
+    const publicIdWithExtension = urlParts[urlParts.length - 1];
+    const publicId = publicIdWithExtension.split('.')[0];
+    return publicId;
   }
 }

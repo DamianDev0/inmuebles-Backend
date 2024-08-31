@@ -97,4 +97,22 @@ export class AppController {
   ) {
     return await this.appService.deletePropertyFeature(featureId, propertyId);
   }
+
+  @Post(':propertyId/medias')
+  @UseInterceptors(FileInterceptor('image'))
+  async createNewPropertyMedia(
+    @UploadedFile() image: Express.Multer.File,
+    @Param('id') propertyId: string,
+  ) {
+    return await this.appService.createNewPropertyMedia(image, propertyId);
+  }
+
+  @Delete(':propertyId/medias/:mediaId')
+  @HttpCode(HttpStatus.OK)
+  async deletePropertyMedia(
+    @Param('propertyId') propertyId: string,
+    @Param('mediaId') mediaId: string,
+  ) {
+    return await this.appService.deletePropertyMedia(mediaId, propertyId);
+  }
 }

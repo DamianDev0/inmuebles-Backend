@@ -14,6 +14,9 @@ import { PatchPropertyBasicDataService } from './services/patchProperty/patchPro
 import { DeletePropertyFeaturesService } from './services/deletePropertyFeature.ts/deletePropertyFeature.service';
 import { CreatePropertyFeaturesService } from './services/createPropertyFeature/createPropertyFeature.service';
 import { PropertyFeatures } from './entities/propertyFeatures.entity';
+import { PropertyMedia } from './entities/propertyMedia.entity';
+import { DeletePropertyMediaService } from './services/deletePropertyMedia/deletePropertyMedia.service';
+import { CreatePropertyMediaService } from './services/createPropertyMedia/createPropertyMedia.service';
 
 @Module({
   imports: [
@@ -35,7 +38,7 @@ import { PropertyFeatures } from './entities/propertyFeatures.entity';
         synchronize: true,
       }),
     }),
-    TypeOrmModule.forFeature([Property, PropertyFeatures]),
+    TypeOrmModule.forFeature([Property, PropertyFeatures, PropertyMedia]),
   ],
   controllers: [AppController],
   providers: [
@@ -49,6 +52,8 @@ import { PropertyFeatures } from './entities/propertyFeatures.entity';
     PatchPropertyBasicDataService,
     DeletePropertyFeaturesService,
     CreatePropertyFeaturesService,
+    CreatePropertyMediaService,
+    DeletePropertyMediaService,
   ],
 })
 export class AppModule {}

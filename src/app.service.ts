@@ -12,6 +12,10 @@ import { DeleteResult, UpdateResult } from 'typeorm';
 import { CreatePropertyFeaturesService } from './services/createPropertyFeature/createPropertyFeature.service';
 import { PropertyFeatures } from './entities/propertyFeatures.entity';
 import { CreatePropertyFeaturesDTO } from './dtos/createPropertyFeaturesDTO/createPropertyFeature.dto';
+import { DeletePropertyMediaService } from './services/deletePropertyMedia/deletePropertyMedia.service';
+import { PropertyMedia } from './entities/propertyMedia.entity';
+import { CreatePropertyMediaService } from './services/createPropertyMedia/createPropertyMedia.service';
+import { promises } from 'dns';
 @Injectable()
 export class AppService {
   constructor(
@@ -22,6 +26,8 @@ export class AppService {
     private readonly patchPropertyBasicData: PatchPropertyBasicDataService,
     private readonly deletePropertyFeatures: DeletePropertyFeaturesService,
     private readonly createPropertyFeatures: CreatePropertyFeaturesService,
+    private readonly createPropertyMediaService: CreatePropertyMediaService,
+    private readonly deletePropertyMediaService: DeletePropertyMediaService,
   ) {}
 
   createNewProperty(createPropertyDto: CreatePropertyDto): Promise<Property> {
@@ -63,6 +69,26 @@ export class AppService {
     PropertyId: string,
   ): Promise<DeleteResult> {
     return await this.deletePropertyFeatures.deletePropertyFeature(
+      id,
+      PropertyId,
+    );
+  }
+
+  async createNewPropertyMedia(
+    image: Express.Multer.File,
+    propertyId: string,
+  ): Promise<PropertyMedia> {
+    return await this.createPropertyMediaService.createPropertyMedia(
+      image,
+      propertyId,
+    );
+  }
+
+  async deletePropertyMedia(
+    id: string,
+    PropertyId: string,
+  ): Promise<PropertyMedia> {
+    return await this.deletePropertyMediaService.deletePropertyMedia(
       id,
       PropertyId,
     );
