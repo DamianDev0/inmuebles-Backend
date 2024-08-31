@@ -11,17 +11,16 @@ export class GetPropertyByIdService implements IgetPropertyById {
     private readonly propertyRepository: Repository<Property>,
   ) {}
 
-    async getPropertyById(propertyId: string): Promise<Property | undefined> {
-        if (!propertyId) {
-            throw new Error('propertyId is required');
-        }
-    
-        const property = await this.propertyRepository
-            .createQueryBuilder('property')
-            .where('property.id = :id', { id: propertyId })
-            .getOne();
-    
-        return property;
+  async getPropertyById(propertyId: string): Promise<Property | undefined> {
+    if (!propertyId) {
+      throw new Error('propertyId is required');
     }
 
+    const property = await this.propertyRepository
+      .createQueryBuilder('property')
+      .where('property.id = :id', { id: propertyId })
+      .getOne();
+
+    return property;
+  }
 }

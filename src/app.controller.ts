@@ -1,4 +1,3 @@
-
 import {
   BadRequestException,
   NotFoundException,
@@ -20,13 +19,12 @@ import { IdOPropertyDto } from './dtos/GetProperty/getPropertyByIdDto.dto';
 import { validate } from 'class-validator';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-
 @ApiTags('properties')
 @Controller('properties')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post('create')
+  @Post()
   @UseInterceptors(FileInterceptor('image'))
   async postProperty(
     @Body() body: any,
@@ -39,7 +37,6 @@ export class AppController {
     };
 
     return await this.appService.createNewProperty(propertyDto);
-
   }
 
   @Get()
@@ -63,7 +60,7 @@ export class AppController {
     if (!property) {
       throw new NotFoundException(`Property with ID ${propertyId} not found`);
     }
-    return {property};
+    return { property };
   }
 
   @Delete(':id')
