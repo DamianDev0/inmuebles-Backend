@@ -10,6 +10,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api');
 
+
   // Configuración de CORS
   app.enableCors();
 

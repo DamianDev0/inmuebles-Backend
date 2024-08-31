@@ -10,10 +10,12 @@ import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.s
 import { CloudinaryService } from './common/cloudinary/cloudinary.service';
 import { CloudinaryProvider } from './common/cloudinary/cloudinary.provaider';
 import { DeletePropertyService } from './services/deleteProperty/delete-property/deleteProperty.service';
+import { PropertyMedia } from './entities/propertyMedia.entity';
+import { GetPropertyWithImage } from './services/GetProperty/getPropertyWithImage.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Property]),
+    TypeOrmModule.forFeature([Property, PropertyMedia]),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -41,6 +43,8 @@ import { DeletePropertyService } from './services/deleteProperty/delete-property
     CloudinaryService,
     CloudinaryProvider,
     DeletePropertyService,
+    PropertyMedia,
+    GetPropertyWithImage,
   ],
 })
 export class AppModule {}
