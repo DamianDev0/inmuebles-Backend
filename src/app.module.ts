@@ -7,6 +7,9 @@ import { CreatePropertyService } from './services/createProperty/createProperty.
 import { Property } from './entities/property.entity';
 import { GetAllPropertiesService } from './services/GetProperty/getAllProperties.service';
 import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.service';
+import { CloudinaryService } from './common/cloudinary/cloudinary.service';
+import { CloudinaryProvider } from './common/cloudinary/cloudinary.provaider';
+import { DeletePropertyService } from './services/deleteProperty/delete-property/deleteProperty.service';
 
 @Module({
   imports: [
@@ -30,6 +33,14 @@ import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.s
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, CreatePropertyService,GetAllPropertiesService,GetPropertyByIdService],
+  providers: [
+    AppService,
+    CreatePropertyService,
+    GetAllPropertiesService,
+    GetPropertyByIdService,
+    CloudinaryService,
+    CloudinaryProvider,
+    DeletePropertyService,
+  ],
 })
 export class AppModule {}

@@ -6,10 +6,10 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class GetPropertyByIdService implements IgetPropertyById {
-    constructor(
-        @InjectRepository(Property)
-        private readonly propertyRepository: Repository<Property>,
-    ) {}
+  constructor(
+    @InjectRepository(Property)
+    private readonly propertyRepository: Repository<Property>,
+  ) {}
 
     async getPropertyById(propertyId: string): Promise<Property | undefined> {
         if (!propertyId) {
@@ -23,4 +23,5 @@ export class GetPropertyByIdService implements IgetPropertyById {
     
         return property;
     }
+
 }

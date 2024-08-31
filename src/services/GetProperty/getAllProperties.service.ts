@@ -6,14 +6,14 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class GetAllPropertiesService implements IgetAllProperties {
-    constructor(
-        @InjectRepository(Property)
-        private readonly propertyRepository: Repository<Property>,
-    ) {}
+  constructor(
+    @InjectRepository(Property)
+    private readonly propertyRepository: Repository<Property>,
+  ) {}
 
-    async getAllProperties(): Promise<Property[]> {
-        return await this.propertyRepository
-            .createQueryBuilder('property')
-            .getMany();
-    }
+  async getAllProperties(): Promise<Property[]> {
+    return await this.propertyRepository
+      .createQueryBuilder('property')
+      .getMany();
+  }
 }
