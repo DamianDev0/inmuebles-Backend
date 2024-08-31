@@ -10,6 +10,10 @@ import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.s
 import { CloudinaryService } from './common/cloudinary/cloudinary.service';
 import { CloudinaryProvider } from './common/cloudinary/cloudinary.provaider';
 import { DeletePropertyService } from './services/deleteProperty/delete-property/deleteProperty.service';
+import { PatchPropertyBasicDataService } from './services/patchProperty/patchPropertyBasicData.service';
+import { DeletePropertyFeaturesService } from './services/deletePropertyFeature.ts/deletePropertyFeature.service';
+import { CreatePropertyFeaturesService } from './services/createPropertyFeature/createPropertyFeature.service';
+import { PropertyFeatures } from './entities/propertyFeatures.entity';
 
 @Module({
   imports: [
@@ -31,6 +35,7 @@ import { DeletePropertyService } from './services/deleteProperty/delete-property
         synchronize: true,
       }),
     }),
+    TypeOrmModule.forFeature([Property, PropertyFeatures]),
   ],
   controllers: [AppController],
   providers: [
@@ -41,6 +46,9 @@ import { DeletePropertyService } from './services/deleteProperty/delete-property
     CloudinaryService,
     CloudinaryProvider,
     DeletePropertyService,
+    PatchPropertyBasicDataService,
+    DeletePropertyFeaturesService,
+    CreatePropertyFeaturesService,
   ],
 })
 export class AppModule {}
