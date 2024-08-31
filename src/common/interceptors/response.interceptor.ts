@@ -13,6 +13,7 @@ export class ResponseInterceptor implements NestInterceptor {
     const ctx = context.switchToHttp();
     const response = ctx.getResponse();
 
+
     return next.handle().pipe(
       map((data) => ({
         code: response.statusCode,
@@ -24,6 +25,8 @@ export class ResponseInterceptor implements NestInterceptor {
 
   private getMessageForStatusCode(statusCode: number): string {
     switch (statusCode) {
+      case 404:
+        return 'Not Found';
       case 200:
         return 'Success';
       case 201:
@@ -35,7 +38,7 @@ export class ResponseInterceptor implements NestInterceptor {
       case 204:
         return 'No Content';
       default:
-        return 'Success';
+        return 'error not handler';
     }
   }
 }
