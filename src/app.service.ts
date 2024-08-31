@@ -6,6 +6,7 @@ import { GetAllPropertiesService } from './services/GetProperty/getAllProperties
 import { GetPropertyByIdService } from './services/GetProperty/getPropertyById.service';
 import { IdOPropertyDto } from './dtos/GetProperty/getPropertyByIdDto.dto';
 import { DeletePropertyService } from './services/deleteProperty/delete-property/deleteProperty.service';
+import { GetPropertyWithImage } from './services/GetProperty/getPropertyWithImage.service';
 @Injectable()
 export class AppService {
   constructor(
@@ -13,14 +14,15 @@ export class AppService {
     private readonly getProperty: GetAllPropertiesService,
     private readonly getPropertyByOneId: GetPropertyByIdService,
     private readonly deletePropertyService: DeletePropertyService,
+    private readonly getPropertyWithImage: GetPropertyWithImage,
   ) {}
 
   createNewProperty(createPropertyDto: CreatePropertyDto): Promise<Property> {
     return this.createProperty.createProperty(createPropertyDto);
   }
 
-  getProperties(): Promise<Property[]> {
-    return this.getProperty.getAllProperties();
+  async getProperties(): Promise<Property[]> {
+    return await this.getPropertyWithImage.getAllPropertiesWithImages();
   }
 
   getPropertyById(

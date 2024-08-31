@@ -11,6 +11,7 @@ import { CloudinaryService } from './common/cloudinary/cloudinary.service';
 import { CloudinaryProvider } from './common/cloudinary/cloudinary.provaider';
 import { DeletePropertyService } from './services/deleteProperty/delete-property/deleteProperty.service';
 import { PropertyMedia } from './entities/propertyMedia.entity';
+import { GetPropertyWithImage } from './services/GetProperty/getPropertyWithImage.service';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { PropertyMedia } from './entities/propertyMedia.entity';
     CloudinaryProvider,
     DeletePropertyService,
     PropertyMedia,
+    GetPropertyWithImage,
   ],
 })
 export class AppModule {}

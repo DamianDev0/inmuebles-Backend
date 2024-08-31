@@ -21,7 +21,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post('create')
+  @Post()
   @UseInterceptors(FileInterceptor('image'))
   async postProperty(
     @Body() body: any,
