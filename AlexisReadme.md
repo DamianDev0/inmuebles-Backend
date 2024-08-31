@@ -34,3 +34,29 @@ This update adds a feature for deleting properties in the property management mo
 - **Module Update:** Registered the new service in the application module.
 
 This update enhances property management by introducing a structured approach to deletion and integrating it into the existing service framework.
+
+
+
+
+
+### **Global Exception Filter Documentation**
+
+**File: `FILTER-EXCEPTION.md`**
+
+# Global Exception Filter Implementation in NestJS
+
+## Overview
+
+This document describes how a global exception filter has been configured in the NestJS application to consistently handle all HTTP exceptions.
+
+## Modified Files
+
+1. **`http-exception.filter.ts`**  
+   Defines a custom exception filter that handles all HTTP exceptions in the application, ensuring consistent error responses.
+
+2. **`main.ts`**  
+   Registers the exception filter globally to apply it to all HTTP requests in the application.
+
+## Conclusion
+
+The implementation of the global exception filter ensures uniform and detailed error handling across the entire application.
